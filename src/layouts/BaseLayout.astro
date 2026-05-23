@@ -60,8 +60,8 @@ const structuredData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
     <SEO
       title={title}
       description={description}
@@ -89,6 +89,6 @@ const structuredData = {
   </head>
   <body>
     <slot />
-    <script src="/scripts/nav.js" defer></script>
+    <script src={`${import.meta.env.BASE_URL}scripts/nav.js`} defer></script>
   </body>
 </html>
