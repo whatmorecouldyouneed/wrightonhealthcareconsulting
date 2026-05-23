@@ -1,0 +1,89 @@
+---
+import Container from './primitives/Container.astro';
+---
+
+<!-- TODO: replace with real client quote when Warnetta provides one -->
+<section class="testimonial section section--sand" aria-labelledby="testimonial-heading">
+  <Container>
+    <div class="testimonial__header">
+      <h2 id="testimonial-heading">Testimonials</h2>
+      <p>Nothing speaks louder than success.</p>
+    </div>
+
+    <blockquote class="testimonial__card">
+      <span class="testimonial__quote" aria-hidden="true">"</span>
+      <p>
+        Warnetta brought structure and clarity to our practice operations when we needed it most.
+        Her patient experience expertise and hands-on leadership made an immediate difference for
+        our team and the communities we serve.
+      </p>
+      <footer>
+        <cite>— Healthcare Leadership Partner</cite>
+        <span class="testimonial__role">North Carolina Health System</span>
+      </footer>
+    </blockquote>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .testimonial__header {
+    text-align: center;
+    margin-bottom: $space-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+
+    p {
+      color: $color-slate;
+    }
+  }
+
+  .testimonial__card {
+    position: relative;
+    max-width: 720px;
+    margin-inline: auto;
+    background-color: $color-white;
+    border-radius: $radius-lg;
+    padding: $space-xl $space-lg;
+    box-shadow: $shadow-card;
+
+    @include respond-to(md) {
+      padding: $space-2xl;
+    }
+
+    p {
+      font-size: $font-size-body;
+      color: $color-navy;
+      margin-bottom: $space-md;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    cite {
+      font-style: normal;
+      font-weight: 700;
+      color: $color-navy;
+    }
+  }
+
+  .testimonial__quote {
+    display: block;
+    font-family: $font-serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: $color-gold;
+    margin-bottom: $space-sm;
+  }
+
+  .testimonial__role {
+    font-size: $font-size-small;
+    color: $color-slate;
+  }
+</style>

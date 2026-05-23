@@ -1,0 +1,72 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'outline-light' | 'ghost';
+  external?: boolean;
+  class?: string;
+}
+
+const { href, variant = 'primary', external = false, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['btn', `btn--${variant}`, className]}
+  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+>
+  <slot />
+</a>
+
+<style lang="scss">
+  @use '../../styles/variables' as *;
+  @use '../../styles/mixins' as *;
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-xs;
+    padding: 0.875rem 1.75rem;
+    font-family: $font-sans;
+    font-size: $font-size-body;
+    font-weight: 600;
+    line-height: 1;
+    border-radius: $radius-pill;
+    transition: background-color $transition-base, color $transition-base, border-color $transition-base, transform $transition-fast;
+    @include touch-target;
+    @include focus-ring;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &--primary {
+      background-color: $color-coral;
+      color: $color-white;
+
+      &:hover {
+        background-color: color-mix(in srgb, #{$color-coral} 92%, black);
+      }
+    }
+
+    &--outline-light {
+      background-color: transparent;
+      color: $color-white;
+      border: 2px solid $color-white;
+
+      &:hover {
+        background-color: rgba($color-white, 0.12);
+      }
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: $color-navy;
+      border: 2px solid $color-navy;
+
+      &:hover {
+        background-color: rgba($color-navy, 0.06);
+      }
+    }
+  }
+</style>

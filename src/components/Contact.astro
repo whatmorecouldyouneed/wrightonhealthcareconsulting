@@ -1,0 +1,72 @@
+---
+import CtaCard from './CtaCard.astro';
+import Button from './primitives/Button.astro';
+import IllustrationFigure from './primitives/IllustrationFigure.astro';
+import collaborationIllustration from '../assets/illustrations/collaboration.svg?url';
+
+const email = 'Warnettabell02@icloud.com';
+const subject = encodeURIComponent('Consulting Inquiry - Wrighton Healthcare Consulting');
+const body = encodeURIComponent("Hi Warnetta,\n\nI'd like to discuss:\n\n");
+const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+---
+
+<section class="contact-visual section section--white" aria-hidden="true">
+  <IllustrationFigure src={collaborationIllustration} alt="" />
+</section>
+
+<CtaCard
+  id="contact"
+  heading="Ready to improve how your organization runs?"
+  body="Reach out to discuss healthcare operations, patient experience, practice management, or care coordination consulting."
+  buttonText="Send an email"
+  buttonHref={mailto}
+>
+  <div class="contact__details">
+    <Button href={mailto} variant="outline-light" class="contact__email-btn">
+      {email}
+    </Button>
+    <div class="contact__info">
+      <a href="tel:+12525066451">252.506.6451</a>
+      <span>Zebulon, NC</span>
+    </div>
+  </div>
+</CtaCard>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .contact-visual {
+    padding-block: $space-lg $space-sm;
+  }
+
+  .contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    margin-top: $space-sm;
+  }
+
+  .contact__email-btn {
+    align-self: flex-start;
+    font-size: $font-size-small;
+    word-break: break-all;
+  }
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    color: rgba($color-white, 0.88);
+
+    a {
+      font-weight: 600;
+      color: $color-white;
+      @include focus-ring;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,115 @@
+---
+import Container from './primitives/Container.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer section section--white">
+  <Container>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo">Wrighton</span>
+        <span class="footer__tagline">Healthcare Consulting</span>
+        <p class="footer__copy">&copy; {year} Wrighton Healthcare Consulting</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer__credit">
+        Site by <a href="https://whatmorecouldyouneed.com" target="_blank" rel="noopener noreferrer">WMCYN</a>
+      </p>
+    </div>
+  </Container>
+</footer>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .footer {
+    padding-block: $space-xl;
+    border-top: 1px solid rgba($color-navy, 0.08);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: $space-xl;
+    }
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer__logo {
+    font-family: $font-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $color-navy;
+  }
+
+  .footer__tagline {
+    font-size: $font-size-small;
+    color: $color-gold;
+    font-weight: 500;
+  }
+
+  .footer__copy {
+    margin-top: $space-sm;
+    font-size: $font-size-small;
+    color: $color-slate;
+  }
+
+  .footer__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      gap: $space-lg;
+    }
+
+    a {
+      font-weight: 500;
+      color: $color-navy;
+      @include touch-target;
+      @include focus-ring;
+
+      &:hover {
+        color: $color-coral;
+      }
+    }
+  }
+
+  .footer__credit {
+    font-size: $font-size-small;
+    color: $color-slate;
+
+    a {
+      color: $color-navy;
+      font-weight: 600;
+      @include focus-ring;
+
+      &:hover {
+        color: $color-coral;
+      }
+    }
+  }
+</style>

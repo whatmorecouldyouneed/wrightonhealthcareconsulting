@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Healthcare clinician consulting with patient">
+  <rect width="800" height="600" fill="none"/>
+  <!-- patient -->
+  <ellipse cx="280" cy="480" rx="90" ry="18" fill="#1F2A44" opacity="0.08"/>
+  <circle cx="280" cy="260" r="42" fill="#FFD4C4"/>
+  <path d="M220 420 Q280 360 340 420 L340 480 L220 480 Z" fill="#C9A14A"/>
+  <!-- clinician -->
+  <ellipse cx="520" cy="480" rx="90" ry="18" fill="#1F2A44" opacity="0.08"/>
+  <circle cx="520" cy="240" r="44" fill="#FFD4C4"/>
+  <path d="M450 420 Q520 350 590 420 L590 480 L450 480 Z" fill="#FFFFFF" stroke="#1F2A44" stroke-width="3"/>
+  <path d="M450 380 L590 380 L590 420 L450 420 Z" fill="#E5512B"/>
+  <!-- clipboard -->
+  <rect x="560" y="300" width="90" height="120" rx="8" fill="#FAF8F5" stroke="#1F2A44" stroke-width="3"/>
+  <rect x="575" y="330" width="60" height="8" rx="4" fill="#C9A14A"/>
+  <rect x="575" y="350" width="45" height="8" rx="4" fill="#E5512B" opacity="0.6"/>
+  <rect x="575" y="370" width="55" height="8" rx="4" fill="#C9A14A" opacity="0.5"/>
+  <!-- heart icon -->
+  <circle cx="180" cy="180" r="50" fill="#F1ECE3"/>
+  <path d="M180 210 C160 190 145 175 145 160 C145 148 155 140 165 140 C172 140 178 144 180 150 C182 144 188 140 195 140 C205 140 215 148 215 160 C215 175 200 190 180 210Z" fill="#E5512B"/>
+  <!-- cross -->
+  <rect x="620" y="130" width="16" height="50" rx="4" fill="#C9A14A"/>
+  <rect x="603" y="147" width="50" height="16" rx="4" fill="#C9A14A"/>
+</svg>

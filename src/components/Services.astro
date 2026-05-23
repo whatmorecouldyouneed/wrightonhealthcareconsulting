@@ -1,0 +1,110 @@
+---
+import Container from './primitives/Container.astro';
+import SectionEyebrow from './primitives/SectionEyebrow.astro';
+import Button from './primitives/Button.astro';
+
+const services = [
+  {
+    title: 'Healthcare Operations & Practice Management',
+    description: 'Scheduling, staffing, resource allocation, and day-to-day practice leadership that keeps teams aligned and care delivery on track.',
+  },
+  {
+    title: 'Patient Experience Strategy',
+    description: 'Press Ganey data analysis, survey-driven process improvement, and actionable plans to elevate the patient journey.',
+  },
+  {
+    title: 'Process Improvement & PDSA Cycles',
+    description: 'Structured quality improvement using PDSA methodology to identify bottlenecks, test solutions, and sustain gains.',
+  },
+  {
+    title: 'Regulatory Compliance',
+    description: 'HIPAA, OSHA, and infection prevention policy alignment with ongoing unit-based performance improvement activities.',
+  },
+  {
+    title: 'Care Coordination & Resource Utilization',
+    description: 'Member assessment, care plan development, and resource management to ensure appropriate, timely delivery of care.',
+  },
+  {
+    title: 'EHR / EPIC Workflow Optimization',
+    description: 'EPIC super-user expertise to streamline clinical workflows, improve documentation, and support staff adoption.',
+  },
+];
+---
+
+<section class="services section section--white" id="services" aria-labelledby="services-heading">
+  <Container>
+    <div class="services__header">
+      <SectionEyebrow text="What I do" />
+      <h2 id="services-heading">Operational expertise across the care continuum</h2>
+      <p>
+        Practical, hands-on consulting grounded in real healthcare leadership — from primary care
+        practices to health systems and payor organizations.
+      </p>
+    </div>
+
+    <ul class="services__grid">
+      {services.map((service) => (
+        <li class="services__card">
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="services__cta">
+      <Button href="#contact" variant="ghost">Discuss your needs</Button>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .services__header {
+    max-width: 640px;
+    margin-bottom: $space-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  .services__grid {
+    display: grid;
+    gap: $space-md;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .services__card {
+    background-color: $color-off-white;
+    border-radius: $radius-md;
+    padding: $space-lg;
+    box-shadow: $shadow-card;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba($color-navy, 0.12);
+    }
+
+    h3 {
+      font-size: $font-size-h3;
+      color: $color-navy;
+    }
+  }
+
+  .services__cta {
+    margin-top: $space-xl;
+    text-align: center;
+  }
+</style>

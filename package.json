@@ -1,0 +1,22 @@
+{
+  "name": "wrightonhealthcareconsulting",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/generate-images.mjs && astro build",
+    "preview": "astro preview",
+    "generate:assets": "node scripts/generate-images.mjs"
+  },
+  "dependencies": {
+    "@fontsource/fraunces": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "astro": "^4.16.18",
+    "astro-seo": "^0.8.4",
+    "sass": "^1.83.4"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import IntroBand from '../components/IntroBand.astro';
+import Services from '../components/Services.astro';
+import Experience from '../components/Experience.astro';
+import StatCallout from '../components/StatCallout.astro';
+import CtaCard from '../components/CtaCard.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero />
+    <IntroBand />
+    <Services />
+    <Experience />
+    <StatCallout />
+    <CtaCard
+      heading="Let's improve how your organization runs."
+      body="Partner with a healthcare leader who understands operations from the inside out."
+      buttonText="Get in touch"
+      buttonHref="#contact"
+    />
+    <Testimonial />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,48 @@
+---
+import Container from './primitives/Container.astro';
+---
+
+<section class="intro-band section section--sand" id="about" aria-labelledby="about-heading">
+  <Container>
+    <div class="intro-band__inner">
+      <h2 id="about-heading">Built on a decade of healthcare leadership</h2>
+      <p>
+        Warnetta Wrighton earned her <strong>Master of Healthcare Administration</strong> from the
+        University of North Carolina Wilmington (2023) and her Bachelor of Science in Healthcare
+        Administration from Purdue University Global with a 3.96 GPA, Golden Key Honor Society
+        membership, and Student Ambassador recognition.
+      </p>
+      <p>
+        From the front lines of patient care to executive leadership at UNC Health, Duke Primary
+        Care, and Elevance Health, she brings hands-on experience in practice management, patient
+        experience strategy, process improvement, and regulatory compliance to every engagement.
+      </p>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .intro-band__inner {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+
+    h2 {
+      margin-bottom: $space-xs;
+    }
+
+    p {
+      text-align: left;
+
+      @include respond-to(md) {
+        text-align: center;
+      }
+    }
+  }
+</style>

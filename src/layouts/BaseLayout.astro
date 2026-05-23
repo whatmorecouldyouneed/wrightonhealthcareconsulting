@@ -1,0 +1,94 @@
+---
+import '../styles/global.scss';
+import { SEO } from 'astro-seo';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Wrighton Healthcare Consulting | Warnetta Wrighton, MHA',
+  description = 'Healthcare operations, patient experience, and practice management consulting by Warnetta Wrighton, Master of Healthcare Administration. Serving providers, health systems, and payors across North Carolina.',
+} = Astro.props;
+
+const siteUrl = 'https://wrightonhealthcareconsulting.com';
+const ogImage = `${siteUrl}/og-image.png`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Wrighton Healthcare Consulting',
+      url: siteUrl,
+      description,
+      areaServed: 'United States',
+      founder: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'Warnetta Wrighton',
+      jobTitle: 'Healthcare Consultant',
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'degree',
+        name: 'Master of Healthcare Administration',
+        recognizedBy: {
+          '@type': 'CollegeOrUniversity',
+          name: 'University of North Carolina Wilmington',
+        },
+      },
+      email: 'Warnettabell02@icloud.com',
+      telephone: '+1-252-506-6451',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Zebulon',
+        addressRegion: 'NC',
+        postalCode: '27597',
+        addressCountry: 'US',
+      },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <SEO
+      title={title}
+      description={description}
+      canonical={siteUrl}
+      openGraph={{
+        basic: {
+          title,
+          type: 'website',
+          image: ogImage,
+          url: siteUrl,
+        },
+        optional: {
+          description,
+          siteName: 'Wrighton Healthcare Consulting',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title,
+        description,
+        image: ogImage,
+      }}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <slot />
+    <script src="/scripts/nav.js" defer></script>
+  </body>
+</html>

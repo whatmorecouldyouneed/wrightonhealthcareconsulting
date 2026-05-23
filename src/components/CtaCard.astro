@@ -1,0 +1,61 @@
+---
+import Container from './primitives/Container.astro';
+import Button from './primitives/Button.astro';
+
+interface Props {
+  heading: string;
+  body: string;
+  buttonText: string;
+  buttonHref: string;
+  id?: string;
+}
+
+const { heading, body, buttonText, buttonHref, id } = Astro.props;
+---
+
+<section class="cta-card section section--navy" {id} aria-labelledby={id ? `${id}-heading` : undefined}>
+  <Container>
+    <div class="cta-card__panel">
+      <h2 id={id ? `${id}-heading` : undefined}>{heading}</h2>
+      <p>{body}</p>
+      <Button href={buttonHref} variant="outline-light">{buttonText}</Button>
+      <slot />
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .cta-card {
+    padding-block: $space-xl;
+  }
+
+  .cta-card__panel {
+    max-width: 720px;
+    margin-inline: auto;
+    padding: $space-xl $space-lg;
+    background-color: rgba($color-white, 0.06);
+    border: 1px solid rgba($color-white, 0.15);
+    border-radius: $radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    text-align: left;
+
+    @include respond-to(md) {
+      padding: $space-2xl;
+    }
+
+    h2 {
+      color: $color-white;
+      font-size: $font-size-h2;
+    }
+
+    p {
+      color: rgba($color-white, 0.88);
+      max-width: 52ch;
+    }
+  }
+</style>

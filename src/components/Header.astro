@@ -1,0 +1,160 @@
+---
+import Container from './primitives/Container.astro';
+import Button from './primitives/Button.astro';
+---
+
+<header class="header" id="top">
+  <Container>
+    <div class="header__inner">
+      <a href="#top" class="header__brand">
+        <span class="header__logo">Wrighton</span>
+        <span class="header__tagline">Healthcare Consulting</span>
+      </a>
+
+      <button
+        class="header__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open menu"
+      >
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+      </button>
+
+      <nav class="header__nav" id="site-nav" aria-label="Main navigation">
+        <ul class="header__nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <Button href="#contact" variant="primary" class="header__cta">Get in touch</Button>
+      </nav>
+    </div>
+  </Container>
+</header>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: $color-white;
+    box-shadow: $shadow-header;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+    padding-block: $space-sm;
+  }
+
+  .header__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    @include focus-ring;
+  }
+
+  .header__logo {
+    font-family: $font-serif;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: $color-navy;
+    line-height: 1.1;
+  }
+
+  .header__tagline {
+    font-size: $font-size-small;
+    color: $color-gold;
+    font-weight: 500;
+  }
+
+  .header__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: $space-xs;
+    @include touch-target;
+    @include focus-ring;
+
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+
+  .header__toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $color-navy;
+    transition: transform $transition-base, opacity $transition-base;
+  }
+
+  .header__nav {
+    display: none;
+    flex-direction: column;
+    gap: $space-md;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: $space-md $container-padding $space-lg;
+    background-color: $color-white;
+    box-shadow: $shadow-header;
+
+    &.is-open {
+      display: flex;
+    }
+
+    @include respond-to(md) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      position: static;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+      gap: $space-lg;
+    }
+  }
+
+  .header__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-md;
+    }
+
+    a {
+      font-weight: 500;
+      color: $color-navy;
+      padding-block: $space-xs;
+      @include touch-target;
+      @include focus-ring;
+
+      &:hover {
+        color: $color-coral;
+      }
+    }
+  }
+
+  .header__cta {
+    align-self: flex-start;
+
+    @include respond-to(md) {
+      align-self: center;
+    }
+  }
+</style>

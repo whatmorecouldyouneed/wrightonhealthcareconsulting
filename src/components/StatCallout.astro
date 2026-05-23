@@ -1,0 +1,70 @@
+---
+import Container from './primitives/Container.astro';
+---
+
+<section class="stat-callout section section--sand" aria-labelledby="stat-heading">
+  <Container>
+    <div class="stat-callout__inner">
+      <p class="sr-only" id="stat-heading">Years of healthcare leadership experience</p>
+      <div class="stat-callout__number" aria-hidden="true">
+        <span class="stat-callout__value">10+</span>
+        <span class="stat-callout__rule"></span>
+      </div>
+      <p class="stat-callout__caption">
+        years leading operations, patient experience &amp; care delivery across
+        <strong>UNC Health</strong>, <strong>Duke Primary Care</strong>, and <strong>Elevance Health</strong>
+      </p>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .stat-callout__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  .stat-callout__number {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-callout__value {
+    font-family: $font-serif;
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 600;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px $color-gold;
+    text-stroke: 3px $color-gold;
+  }
+
+  .stat-callout__rule {
+    position: absolute;
+    left: -5%;
+    right: -5%;
+    top: 50%;
+    height: 3px;
+    background-color: $color-gold;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .stat-callout__caption {
+    max-width: 36ch;
+    font-size: $font-size-body;
+    color: $color-navy;
+
+    strong {
+      color: $color-navy;
+    }
+  }
+</style>

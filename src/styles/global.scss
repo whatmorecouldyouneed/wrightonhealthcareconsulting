@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@import '@fontsource/fraunces/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@import 'reset';
+
+body {
+  font-family: $font-sans;
+  font-size: $font-size-body;
+  color: $color-slate;
+  background-color: $color-off-white;
+}
+
+h1,
+h2,
+h3 {
+  @include heading-serif;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+h3 {
+  font-size: $font-size-h3;
+}
+
+p {
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: 600;
+  color: $color-navy;
+}
+
+.eyebrow {
+  @include eyebrow;
+}
+
+.section {
+  padding-block: $space-xl;
+
+  @include respond-to(lg) {
+    padding-block: $space-2xl;
+  }
+
+  &--sand {
+    background-color: $color-sand;
+  }
+
+  &--white {
+    background-color: $color-white;
+  }
+
+  &--navy {
+    background-color: $color-navy;
+    color: $color-white;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
