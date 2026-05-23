@@ -26,6 +26,8 @@ jobs:
         with:
           path: .
           node-version: 20
+        env:
+          PUBLIC_CUSTOM_DOMAIN: 'false'
 
   deploy:
     needs: build

@@ -56,6 +56,15 @@ In GoDaddy DNS for `wrightonhealthcareconsulting.com`:
 
 The `public/CNAME` file in this repo tells GitHub Pages to serve the custom domain.
 
+Once GoDaddy DNS has propagated, flip the deploy workflow env to enable the custom domain build:
+
+```yaml
+env:
+  PUBLIC_CUSTOM_DOMAIN: 'true'
+```
+
+Then push to redeploy with `base: /` and `site: https://wrightonhealthcareconsulting.com`.
+
 ## Project structure
 
 ```
