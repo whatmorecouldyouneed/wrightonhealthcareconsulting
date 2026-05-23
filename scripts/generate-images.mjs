@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,10 +36,18 @@ const ogSvg = `
   <text x="190" y="472" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">wrightonhealthcareconsulting.com</text>
 </svg>`;
 
-await sharp(Buffer.from(headshotSvg)).jpeg({ quality: 90 }).toFile(join(assetsDir, 'warnetta-headshot.jpg'));
+const headshotPath = join(assetsDir, 'warnetta-headshot.jpg');
+
+if (!existsSync(headshotPath)) {
+  await sharp(Buffer.from(headshotSvg)).jpeg({ quality: 90 }).toFile(headshotPath);
+  console.log('Generated warnetta-headshot.jpg placeholder');
+} else {
+  console.log('Skipping warnetta-headshot.jpg (file already exists)');
+}
+
 await sharp(Buffer.from(ogSvg)).png().toFile(join(publicDir, 'og-image.png'));
 
 const faviconSvg = readFileSync(join(publicDir, 'favicon.svg'));
 await sharp(faviconSvg).resize(32, 32).png().toFile(join(publicDir, 'favicon.ico'));
 
-console.log('Generated warnetta-headshot.jpg, og-image.png, and favicon.ico');
+console.log('Generated og-image.png and favicon.ico');

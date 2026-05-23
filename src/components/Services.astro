@@ -33,18 +33,18 @@ const services = [
 
 <section class="services section section--white" id="services" aria-labelledby="services-heading">
   <Container>
-    <div class="services__header">
+    <div class="services__header" data-reveal>
       <SectionEyebrow text="What I do" />
       <h2 id="services-heading">Operational expertise across the care continuum</h2>
       <p>
-        Practical, hands-on consulting grounded in real healthcare leadership — from primary care
+        Practical, hands-on consulting grounded in real healthcare leadership, from primary care
         practices to health systems and payor organizations.
       </p>
     </div>
 
     <ul class="services__grid">
       {services.map((service) => (
-        <li class="services__card">
+        <li class="services__card" data-reveal>
           <h3>{service.title}</h3>
           <p>{service.description}</p>
         </li>
@@ -83,18 +83,27 @@ const services = [
   }
 
   .services__card {
-    background-color: $color-off-white;
+    @include elevated-card;
     border-radius: $radius-md;
     padding: $space-lg;
-    box-shadow: $shadow-card;
     display: flex;
     flex-direction: column;
     gap: $space-sm;
-    transition: transform $transition-base, box-shadow $transition-base;
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow $transition-base,
+      border-color $transition-base;
+    transition-delay: var(--reveal-delay, 0ms);
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba($color-navy, 0.12);
+      border-color: rgba($color-navy, 0.14);
+      box-shadow: 0 10px 36px rgba($color-navy, 0.14);
+    }
+
+    &[data-reveal].is-visible:hover {
+      transform: translateY(-2px);
     }
 
     h3 {

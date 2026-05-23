@@ -5,22 +5,24 @@ import Button from './primitives/Button.astro';
 
 <header class="header" id="top">
   <Container>
-    <div class="header__inner">
-      <a href="#top" class="header__brand">
-        <span class="header__logo">Wrighton</span>
-        <span class="header__tagline">Healthcare Consulting</span>
-      </a>
+    <div class="header__shell">
+      <div class="header__inner">
+        <a href="#top" class="header__brand">
+          <span class="header__logo">Wrighton</span>
+          <span class="header__tagline">Healthcare Consulting</span>
+        </a>
 
-      <button
-        class="header__toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        aria-label="Open menu"
-      >
-        <span class="header__toggle-bar"></span>
-        <span class="header__toggle-bar"></span>
-      </button>
+        <button
+          class="header__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="header__toggle-bar"></span>
+          <span class="header__toggle-bar"></span>
+        </button>
+      </div>
 
       <nav class="header__nav" id="site-nav" aria-label="Main navigation">
         <ul class="header__nav-list">
@@ -47,12 +49,28 @@ import Button from './primitives/Button.astro';
     box-shadow: $shadow-header;
   }
 
+  .header__shell {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: $space-lg;
+    }
+  }
+
   .header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: $space-md;
-    padding-block: $space-sm;
+    padding-block: 0.625rem;
+
+    @include respond-to(md) {
+      padding-block: $space-sm;
+    }
   }
 
   .header__brand {
@@ -102,26 +120,21 @@ import Button from './primitives/Button.astro';
     display: none;
     flex-direction: column;
     gap: $space-md;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: $space-md $container-padding $space-lg;
-    background-color: $color-white;
-    box-shadow: $shadow-header;
+    padding: 0 0 $space-md;
+    border-top: 1px solid transparent;
 
     &.is-open {
       display: flex;
+      border-top-color: rgba($color-navy, 0.08);
+      padding-top: $space-md;
     }
 
     @include respond-to(md) {
       display: flex;
       flex-direction: row;
       align-items: center;
-      position: static;
       padding: 0;
-      background: none;
-      box-shadow: none;
+      border-top: none;
       gap: $space-lg;
     }
   }

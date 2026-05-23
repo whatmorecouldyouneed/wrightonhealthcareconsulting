@@ -1,8 +1,6 @@
 ---
 import Container from './primitives/Container.astro';
 import SectionEyebrow from './primitives/SectionEyebrow.astro';
-import IllustrationFigure from './primitives/IllustrationFigure.astro';
-import analyticsIllustration from '../assets/illustrations/analytics.svg?url';
 
 const roles = [
   {
@@ -53,26 +51,20 @@ const roles = [
 ];
 ---
 
-<section class="experience-visual section section--sand" aria-hidden="true">
-  <Container>
-    <IllustrationFigure src={analyticsIllustration} alt="" />
-  </Container>
-</section>
-
 <section class="experience section section--white" id="experience" aria-labelledby="experience-heading">
   <Container>
-    <div class="experience__header">
+    <div class="experience__header" data-reveal>
       <SectionEyebrow text="Experience" />
       <h2 id="experience-heading">A career built inside the system</h2>
       <p>
         From phlebotomy and front-office support to practice management and health system
-        leadership — Warnetta has worked at every level of healthcare delivery.
+        leadership. Warnetta has worked at every level of healthcare delivery.
       </p>
     </div>
 
     <ol class="experience__timeline">
       {roles.map((role) => (
-        <li class="experience__item">
+        <li class="experience__item" data-reveal>
           <div class="experience__meta">
             <time datetime={role.period}>{role.period}</time>
           </div>
@@ -94,10 +86,6 @@ const roles = [
 <style lang="scss">
   @use '../styles/variables' as *;
   @use '../styles/mixins' as *;
-
-  .experience-visual {
-    padding-block: $space-lg;
-  }
 
   .experience__header {
     max-width: 640px;

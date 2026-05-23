@@ -1,18 +1,22 @@
+const header = document.querySelector('.header');
 const toggle = document.querySelector('.header__toggle');
 const nav = document.querySelector('.header__nav');
 
+function setMenuOpen(isOpen) {
+  if (!toggle || !nav) return;
+
+  nav.classList.toggle('is-open', isOpen);
+  header?.classList.toggle('header--menu-open', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+  toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+}
+
 if (toggle && nav) {
   toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    setMenuOpen(!nav.classList.contains('is-open'));
   });
 
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-    });
+    link.addEventListener('click', () => setMenuOpen(false));
   });
 }

@@ -5,20 +5,20 @@ import Container from './primitives/Container.astro';
 <!-- TODO: replace with real client quote when Warnetta provides one -->
 <section class="testimonial section section--sand" aria-labelledby="testimonial-heading">
   <Container>
-    <div class="testimonial__header">
+    <div class="testimonial__header" data-reveal>
       <h2 id="testimonial-heading">Testimonials</h2>
       <p>Nothing speaks louder than success.</p>
     </div>
 
-    <blockquote class="testimonial__card">
-      <span class="testimonial__quote" aria-hidden="true">"</span>
+    <blockquote class="testimonial__card" data-reveal>
+      <span class="testimonial__quote" aria-hidden="true">&ldquo;</span>
       <p>
-        Warnetta brought structure and clarity to our practice operations when we needed it most.
+        &ldquo;Warnetta brought structure and clarity to our practice operations when we needed it most.
         Her patient experience expertise and hands-on leadership made an immediate difference for
-        our team and the communities we serve.
+        our team and the communities we serve.&rdquo;
       </p>
       <footer>
-        <cite>- Healthcare Leadership Partner</cite>
+        <cite>Healthcare Leadership Partner</cite>
         <span class="testimonial__role">North Carolina Health System</span>
       </footer>
     </blockquote>
@@ -42,13 +42,12 @@ import Container from './primitives/Container.astro';
   }
 
   .testimonial__card {
+    @include elevated-card;
     position: relative;
     max-width: 720px;
     margin-inline: auto;
-    background-color: $color-white;
     border-radius: $radius-lg;
     padding: $space-xl $space-lg;
-    box-shadow: $shadow-card;
 
     @include respond-to(md) {
       padding: $space-2xl;

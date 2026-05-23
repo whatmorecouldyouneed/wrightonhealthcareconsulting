@@ -21,6 +21,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure deploy domain
+        run: |
+          if [ "${PUBLIC_CUSTOM_DOMAIN}" = "true" ]; then
+            cp public/CNAME.production public/CNAME
+          else
+            rm -f public/CNAME
+          fi
+        env:
+          PUBLIC_CUSTOM_DOMAIN: 'false'
+
       - name: Install, build, and upload
         uses: withastro/action@v3
         with:

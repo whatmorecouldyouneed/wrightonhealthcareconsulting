@@ -8,14 +8,15 @@ interface Props {
   buttonText: string;
   buttonHref: string;
   id?: string;
+  reveal?: boolean;
 }
 
-const { heading, body, buttonText, buttonHref, id } = Astro.props;
+const { heading, body, buttonText, buttonHref, id, reveal = false } = Astro.props;
 ---
 
 <section class="cta-card section section--navy" {id} aria-labelledby={id ? `${id}-heading` : undefined}>
   <Container>
-    <div class="cta-card__panel">
+    <div class="cta-card__panel" {...(reveal ? { 'data-reveal': true } : {})}>
       <h2 id={id ? `${id}-heading` : undefined}>{heading}</h2>
       <p>{body}</p>
       <Button href={buttonHref} variant="outline-light">{buttonText}</Button>

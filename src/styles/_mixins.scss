@@ -54,3 +54,14 @@
   min-height: 44px;
   min-width: 44px;
 }
+
+@mixin elevated-card {
+  background-color: $color-white;
+  border: $border-card;
+  box-shadow: $shadow-card-elevated;
+
+  @include respond-to(md) {
+    border-color: rgba($color-navy, 0.08);
+    box-shadow: $shadow-card;
+  }
+}

@@ -3,9 +3,7 @@ import { Image } from 'astro:assets';
 import Container from './primitives/Container.astro';
 import SectionEyebrow from './primitives/SectionEyebrow.astro';
 import Button from './primitives/Button.astro';
-import IllustrationFigure from './primitives/IllustrationFigure.astro';
 import headshot from '../assets/warnetta-headshot.jpg';
-import heroIllustration from '../assets/illustrations/hero-clinician.svg?url';
 ---
 
 <section class="hero section section--white" aria-labelledby="hero-heading">
@@ -33,7 +31,6 @@ import heroIllustration from '../assets/illustrations/hero-clinician.svg?url';
             loading="eager"
           />
         </div>
-        <IllustrationFigure src={heroIllustration} alt="" class="hero__illustration" />
       </div>
     </div>
   </Container>
@@ -44,7 +41,13 @@ import heroIllustration from '../assets/illustrations/hero-clinician.svg?url';
   @use '../styles/mixins' as *;
 
   .hero {
-    padding-block: $space-lg $space-xl;
+    padding-top: $space-sm;
+    padding-bottom: $space-lg;
+
+    @include respond-to(md) {
+      padding-top: $space-md;
+      padding-bottom: $space-xl;
+    }
 
     @include respond-to(lg) {
       padding-block: $space-2xl;
@@ -53,8 +56,12 @@ import heroIllustration from '../assets/illustrations/hero-clinician.svg?url';
 
   .hero__grid {
     display: grid;
-    gap: $space-xl;
+    gap: $space-lg;
     align-items: center;
+
+    @include respond-to(md) {
+      gap: $space-xl;
+    }
 
     @include respond-to(lg) {
       grid-template-columns: 1fr 1fr;
@@ -109,11 +116,5 @@ import heroIllustration from '../assets/illustrations/hero-clinician.svg?url';
     height: 100%;
     object-fit: cover;
     object-position: center top;
-  }
-
-  .hero__illustration {
-    @include respond-to(lg) {
-      display: none;
-    }
   }
 </style>
