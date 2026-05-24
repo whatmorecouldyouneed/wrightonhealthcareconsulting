@@ -29,7 +29,7 @@ jobs:
             rm -f public/CNAME
           fi
         env:
-          PUBLIC_CUSTOM_DOMAIN: 'false'
+          PUBLIC_CUSTOM_DOMAIN: 'true'
 
       - name: Install, build, and upload
         uses: withastro/action@v3
@@ -37,7 +37,7 @@ jobs:
           path: .
           node-version: 20
         env:
-          PUBLIC_CUSTOM_DOMAIN: 'false'
+          PUBLIC_CUSTOM_DOMAIN: 'true'
 
   deploy:
     needs: build
