@@ -9,6 +9,10 @@ const services = [
     description: 'Scheduling, staffing, resource allocation, and day-to-day practice leadership that keeps teams aligned and care delivery on track.',
   },
   {
+    title: 'FQHC Practice Management',
+    description: 'Hands-on operational support for federally qualified health centers, including workflow design, staffing models, and day-to-day practice leadership.',
+  },
+  {
     title: 'Patient Experience Strategy',
     description: 'Press Ganey data analysis, survey-driven process improvement, and actionable plans to elevate the patient journey.',
   },
@@ -38,7 +42,7 @@ const services = [
       <h2 id="services-heading">Operational expertise across the care continuum</h2>
       <p>
         Practical, hands-on consulting grounded in real healthcare leadership, from primary care
-        practices to health systems and payor organizations.
+        and FQHC practices to health systems and payor organizations.
       </p>
     </div>
 
@@ -109,6 +113,12 @@ const services = [
     h3 {
       font-size: $font-size-h3;
       color: $color-navy;
+    }
+
+    @include respond-to(lg) {
+      &:last-child:nth-child(3n + 1) {
+        grid-column: 2;
+      }
     }
   }
 
